@@ -39,7 +39,7 @@ html = """\
     {0}
   </body>
 </html>
-""".format(df.head(10).to_html())
+""".format(df.head(16).to_html())
 
 msg.add_alternative(html, subtype='html')
 
