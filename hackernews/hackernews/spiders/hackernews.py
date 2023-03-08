@@ -1,3 +1,4 @@
+#!/root/projects/hackernews_parser/hackernews/venv/bin python3
 import scrapy
 import datetime
 import time
@@ -19,15 +20,15 @@ class hackerCrawler(scrapy.Spider):
         
 
         # path to arrow button
-        nums_articles = len(response.xpath('//td[@class="title"]/a/text()').getall()) - 2
+        nums_articles = len(response.xpath('//span[@class="titleline"]/a/text()').getall()) - 2
 
         #xpaths to data
         # xpath_main = '/html/body/center/table/tr[3]/td/table/tr[{}]/td[2]/center/a/div/@class'
-        published_xpath =  response.xpath('//td[2]/span[2]/a/text()').getall()
-        header_xpath =     response.xpath('//td[@class="title"]/a/text()').getall()
-        link_xpath =       response.xpath('//td[@class="title"]/a/@href').getall()
-        views_xpath =      response.xpath('//td[@class="subtext"]/span/text()').getall()
-        comments_xpath =   response.xpath('//td[@class="subtext"]/a[3]/text()').getall()
+        published_xpath =  response.xpath('//span[@class="age"]/a/text()').getall()
+        header_xpath =     response.xpath('//span[@class="titleline"]/a/text()').getall()
+        link_xpath =       response.xpath('//span[@class="titleline"]/a/@href').getall()
+        views_xpath =      response.xpath('//span[@class="score"]/text()').getall()
+        comments_xpath =   response.xpath('//span[@class="subline"]/a[3]/text()').getall()
 
         # function for comments; replace string and convert into int
         func_replacement = lambda x: int(x.replace('\xa0comments','')) if x != 'discuss' and x != '1\xa0comment' else 0

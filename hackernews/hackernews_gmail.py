@@ -6,8 +6,7 @@ from email.message import EmailMessage
 
 # Step 1. Loading json file and prepare for sending
 # 1.1. Load Json file
-df = pd.read_json('/Users/lyanalexandr/Google Drive/Projects/Programming/Python/Practice/Scrapping/hackernews/hacker'
-                  '.jsonlines', lines=True)
+df = pd.read_json('/root/projects/hackernews_parser/hackernews/hacker.jsonlines', lines=True)
 # 1.2. Drop duplicates
 df.drop_duplicates('Article Header', inplace=True)
 # 1.3. Create name for file
@@ -19,8 +18,8 @@ df = df[df['Datetime'] > date_file].sort_values(by='Points', ascending=False)
 
 # Step 2. Send mail in html format
 
-EMAIL_ADDRESS = 'gmail'
-EMAIL_PASSWORD = 'pwd'
+EMAIL_ADDRESS = 'alexlyan1612@gmail.com'
+EMAIL_PASSWORD = 'cbknfmxgdafgilct'
 
 # Recipients List
 recipients = ['alexlyan1612@gmail.com',
